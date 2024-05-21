@@ -7,6 +7,7 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[7.0]
       t.string :uid, :null => false, :default => ""
 
       ## Database authenticatable
+      t.string :email,              null: false, default: ""
       t.string :encrypted_password, :null => false, :default => ""
 
       ## Recoverable
@@ -28,16 +29,10 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[7.0]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
-      ## User Info
-      t.string :name
-      t.string :nickname
-      t.string :image
-      t.string :email
-
       ## Tokens
       t.text :tokens
 
-      t.timestamps
+      t.timestamps null: false
     end
 
     add_index :users, :email,                unique: true
